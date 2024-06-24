@@ -1,0 +1,17 @@
+FROM python:3.10-slim
+
+LABEL author=${LABEL}
+
+COPY requirements.txt ./
+
+RUN pip install -r requirements.txt
+
+COPY ml_service/*.py ./app/
+
+VOLUME /models
+
+WORKDIR app 
+
+EXPOSE ${APP_PORT}
+
+CMD uvicorn price_app:app --reload --port ${APP_PORT} --host 0.0.0.0
