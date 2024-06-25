@@ -1,7 +1,9 @@
 """Класс FastApiHandler, который обрабатывает запросы API."""
 
+import os
 import pickle
 import pandas as pd
+from dotenv import load_dotenv
 
 
 class FastApiHandler:
@@ -15,7 +17,8 @@ class FastApiHandler:
             "model_params": dict
         }
 
-        self.model_path = "../models/model.pkl"
+        load_dotenv()
+        self.model_path = os.environ.get("MODEL_PATH")
         self.load_price_model(model_path=self.model_path)
         
         # необходимые параметры для предсказаний модели оттока

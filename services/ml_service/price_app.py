@@ -22,10 +22,7 @@ main_app_predictions = Histogram(
     # описание метрики
     "Histogram of predictions",
     # указываем корзины для гистограммы
-    buckets=(
-        5000000, 10000000, 15000000, 20000000, 25000000,
-        30000000, 35000000, 40000000, 45000000, 50000000
-    )
+    buckets = (0.5e7, 1e7, 1.5e7, 2e7, 2.5e7, 3e7, 3.5e7, 4e7, 4.5e7, 5e7)
 )
 main_app_counter_errors = Counter(
     # имя метрики
